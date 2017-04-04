@@ -94,4 +94,48 @@ To use a partial from a template, simply include `{{> partialName}}`. Here’s a
 </script>
 ```
 
+## Writing Custom Helpers
+
+To register an expression helper, use the `Handlebars.registerHelper` method. It takes the name of the helper and the helper function as arguments. Handlebars.js takes whatever is returned from the helper function and writes it out to the template, so be sure to always return a string from your custom helpers.
+
+To write an expression helper function to output a formatted phone number, you could define the following helper:
+
+```js
+Handlebars.registerHelper("formatPhoneNumber", function(phoneNumber) {
+  phoneNumber = phoneNumber.toString();
+  return "(" + phoneNumber.substr(0,3) + ") " + phoneNumber.substr(3,3) + "-" + phoneNumber.substr(6,4);
+});
+```
+
+You would use the `formatPhoneNumber` helper in a template like this: `{{formatPhoneNumber phoneNumber}}`
+
+## The Debug Helper
+
+It can be easy at times to get confused about where you are in the stack in a Handlebars.js template. You can keep a debug helper around to help you figure that out.
+
+```js
+Handlebars.registerHelper("debug", function(optionalValue) {
+  console.log("Current Context");
+  console.log("====================");
+  console.log(this);
+ 
+  if (optionalValue) {
+    console.log("Value");
+    console.log("====================");
+    console.log(optionalValue);
+  }
+});
+```
+
+You could then use that helper in any template like:
+
+`{{debug}}`
+
+or like:
+
+`{{debug someValue}}`
+and you’ll see output in the JavaScript console letting you know what’s going on :tada:
+
+
+
 
