@@ -116,7 +116,7 @@ Another Example:
 ```js
 var Handlebars = require('handlebars');
 
-Handlebars.registerHelper('link', function(name, nationality) {
+Handlebars.registerHelper('custom', function(name, nationality) {
   // do something with the parameters
   var newString = name + ' is ' + nationality;
   return newString;
@@ -129,11 +129,11 @@ Calling a helper within a .hbs file
 
 ```html
 <article>
-  {{link name nationality}}
+  {{custom name nationality}}
 </article>
 ```
 
-Here link is the name of the Handlebars helper, and name and nationality are parameters passed to the helper - you could think of it like `link(name, nationality)`
+Here link is the name of the Handlebars helper, and name and nationality are parameters passed to the helper - you could think of it like `custom(name, nationality)`
 
 ```js
 var context = {name: 'Yvonne', nationality: American};
@@ -141,7 +141,7 @@ var html = template(context);
 ```
 ```html
 <!-- html / hbs template file -->
-{{link name nationality}}
+{{custom name nationality}}
 <!-- Yvonne is American-->
 ```
 
@@ -149,7 +149,7 @@ You can also do this:
 
 ```js
 <!-- html / hbs template file -->
-{{link "Alice", "Australian"}}
+{{custom "Alice", "Australian"}}
 <!-- Alice is Australian -->
 ```
 
