@@ -133,7 +133,7 @@ Calling a helper within a .hbs file
 </article>
 ```
 
-Here link is the name of the Handlebars helper, and name and nationality are parameters passed to the helper - you could think of it like `custom(name, nationality)`
+Here `custom` is the name of the Handlebars helper, and name and nationality are parameters passed to the helper - you could think of it like `custom(name, nationality)`
 
 ```js
 var context = {name: 'Yvonne', nationality: American};
