@@ -123,7 +123,8 @@ Handlebars.registerHelper('link', function(name, nationality) {
 });
 ```
 
-Here the helper function is called link which takes two parameters (name and nationality), does something with them, and then returns something
+Here the helper function is called link which takes two parameters (name and nationality), does something with them, and then returns something.
+
 Calling a helper within a .hbs file
 
 ```html
@@ -132,9 +133,7 @@ Calling a helper within a .hbs file
 </article>
 ```
 
-Here link is the name of the Handlebars helper, and name and age are parameters passed to the helper - you could think of it like `link(name, nationality)`
-
-In the above examples, name and nationality are key-value pairs that are passed to the template as an object, where they can be accessed and passed to the helper function:
+Here link is the name of the Handlebars helper, and name and nationality are parameters passed to the helper - you could think of it like `link(name, nationality)`
 
 ```js
 var context = {name: 'Yvonne', nationality: American};
@@ -146,7 +145,7 @@ var html = template(context);
 <!-- Yvonne is American-->
 ```
 
-You can instead pass strings, numbers and booleans as parameters:
+You can also do this: 
 
 ```js
 <!-- html / hbs template file -->
