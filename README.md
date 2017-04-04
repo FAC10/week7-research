@@ -1,5 +1,7 @@
 # week7-research
 
+### FYI: [Handlebars](http://handlebarsjs.com/) is a logic-less templating engine that dynamically generates your HTML page. It’s an extension of Mustache with a few additional features. Mustache is fully logic-less but Handlebars adds minimal logic thanks to the use of some helpers (such as if, with, unless, each and more)...
+
 ## Built-In Helpers
 
 Handlebars includes a few built in helpers that make life easier. They are `{{#each}}`, `{{#if}}`, and `{{#unless}}`.
