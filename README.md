@@ -76,7 +76,7 @@ To use a partial from a template, simply include `{{> partialName}}`. Here’s a
     {{> person}}
   {{/each}}
 </script>
- 
+
 <script id="person-partial" type="text/x-handlebars-template">
   <div class="person">
     <h2>{{first_name}} {{last_name}}</h2>
@@ -85,12 +85,12 @@ To use a partial from a template, simply include `{{> partialName}}`. Here’s a
     <div class="since">User since {{member_since}}</div>
   </div>
 </script>
- 
+
 <script type="text/javascript">
   $(document).ready(function() {
     var template = Handlebars.compile($("#people-template").html());
     Handlebars.registerPartial("person", $("#person-partial").html());
- 
+
     template(yourData);
   }
 </script>
@@ -111,6 +111,49 @@ Handlebars.registerHelper("formatPhoneNumber", function(phoneNumber) {
 
 You would use the `formatPhoneNumber` helper in a template like this: `{{formatPhoneNumber phoneNumber}}`
 
+Another Example:
+
+```js
+var Handlebars = require('handlebars');
+
+Handlebars.registerHelper('link', function(name, nationality) {
+  // do something with the parameters
+  var newString = name + ' is ' + nationality;
+  return newString;
+});
+```
+
+Here the helper function is called link which takes two parameters (name and nationality), does something with them, and then returns something
+Calling a helper within a .hbs file
+
+```html
+<article>
+  {{link name nationality}}
+</article>
+```
+
+Here link is the name of the Handlebars helper, and name and age are parameters passed to the helper - you could think of it like `link(name, nationality)`
+
+In the above examples, name and nationality are key-value pairs that are passed to the template as an object, where they can be accessed and passed to the helper function:
+
+```js
+var context = {name: 'Yvonne', nationality: American};
+var html = template(context);
+```
+```html
+<!-- html / hbs template file -->
+{{link name nationality}}
+<!-- Yvonne is American-->
+```
+
+You can instead pass strings, numbers and booleans as parameters:
+
+```js
+<!-- html / hbs template file -->
+{{link "Alice", "Australian"}}
+<!-- Alice is Australian -->
+```
+
 ## The Debug Helper
 
 It can be easy at times to get confused about where you are in the stack in a Handlebars.js template. You can keep a debug helper around to help you figure that out.
@@ -120,7 +163,7 @@ Handlebars.registerHelper("debug", function(optionalValue) {
   console.log("Current Context");
   console.log("====================");
   console.log(this);
- 
+
   if (optionalValue) {
     console.log("Value");
     console.log("====================");
@@ -137,7 +180,3 @@ or like:
 
 `{{debug someValue}}`
 and you’ll see output in the JavaScript console letting you know what’s going on :tada:
-
-
-
-
